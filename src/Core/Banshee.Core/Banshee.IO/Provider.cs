@@ -30,7 +30,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
-using Mono.Addins;
+// using Mono.Addins;
 
 using Hyena;
 using Banshee.Base;
@@ -43,7 +43,7 @@ namespace Banshee.IO
         private static IProvider provider;
         private static IDirectory directory;
         private static IFile file;
-
+/*
         public static IEnumerable<TypeExtensionNode> GetOrderedExtensions (string extensionPoint, params string [] ordered_ids)
         {
                 return AddinManager.GetExtensionNodes (extensionPoint)
@@ -53,7 +53,8 @@ namespace Banshee.IO
                                        var o = Array.IndexOf (ordered_ids, n.Id);
                                        return o == -1 ? int.MaxValue : o;
                                    });
-        }
+        }*/
+
 
         static Provider () {
             lock (typeof (Provider)) {
@@ -61,24 +62,7 @@ namespace Banshee.IO
                     return;
                 }
 
-                var extensions = GetOrderedExtensions (
-                    "/Banshee/Platform/IOProvider",
-                    ProviderConfiguration.ProviderSchema.Get (),
-                    "Banshee.IO.Gio.Provider", "Banshee.IO.Unix.Provider", "Banshee.IO.SystemIO.Provider"
-                );
-
-                foreach (var node in extensions) {
-                    try {
-                        provider = (IProvider)node.CreateInstance (typeof (IProvider));
-                        break;
-                    } catch (Exception e) {
-                        Log.Warning ("IO provider extension failed to load", e.Message);
-                    }
-                }
-
-                if (provider == null) {
-                    provider = new Banshee.IO.SystemIO.Provider ();
-                }
+                provider = new Banshee.IO.SystemIO.Provider ();
 
                 Log.DebugFormat ("IO provider extension loaded ({0})", provider.GetType ().FullName);
 

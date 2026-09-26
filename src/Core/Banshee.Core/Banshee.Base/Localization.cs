@@ -145,6 +145,26 @@ namespace Banshee.Base
         [DllImport (LibGlibLibrary, CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr g_get_language_names();
 
+        private static string [] PtrToStringArray (IntPtr array)
+        {
+            var strings = new List<string> ();
+
+            for (int i = 0; ; i++) {
+                IntPtr ptr = Marshal.ReadIntPtr (
+                    array,
+                    i * IntPtr.Size
+                );
+
+                if (ptr == IntPtr.Zero) {
+                    break;
+                }
+
+                strings.Add (Marshal.PtrToStringUTF8 (ptr));
+            }
+
+            return strings.ToArray ();
+        }
+
         private static string [] GetLanguageNames()
         {
             IntPtr languages = g_get_language_names();
@@ -153,7 +173,7 @@ namespace Banshee.Base
             }
 
             try {
-                string [] marshalled_languages = Mono.Unix.UnixMarshal.PtrToStringArray(languages);
+                string [] marshalled_languages = PtrToStringArray (languages);
                 if(marshalled_languages == null || marshalled_languages.Length == 0) {
                     return default_languages;
                 }

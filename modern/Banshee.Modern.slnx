@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="Banshee.Core.Modern/Banshee.Core.Modern.csproj" />
   <Project Path="Hyena.Data.Sqlite.Modern/Hyena.Data.Sqlite.Modern.csproj" />
   <Project Path="Hyena.Modern/Hyena.Modern.csproj" />
 </Solution>

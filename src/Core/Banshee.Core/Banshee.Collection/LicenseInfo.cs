@@ -105,7 +105,7 @@ namespace CreativeCommons
 
         private static Dictionary<string, CreativeCommonsLicenseInfo> licenses = new Dictionary<string, CreativeCommonsLicenseInfo> ();
 
-        public static CreateiveCommonsLicenseInfo FromLicenseUrl (string license_url)
+        public static CreativeCommonsLicenseInfo FromLicenseUrl (string license_url)
         {
             if (String.IsNullOrEmpty (license_url))
                 return null;

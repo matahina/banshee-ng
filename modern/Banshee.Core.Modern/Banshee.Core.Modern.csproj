@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Hyena.Modern/Hyena.Modern.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="../../src/Core/Banshee.Core/**/*.cs"
+             Exclude="
+               ../../src/Core/Banshee.Core/**/Tests/**/*.cs;
+               ../../src/Core/Banshee.Core/**/Tests.cs;
+               ../../src/Core/Banshee.Core/Banshee.Collection/LicenseInfo.cs
+             " />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TagLibSharp" Version="2.3.0" />
+  </ItemGroup>
+
+</Project>

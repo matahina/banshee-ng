@@ -27,7 +27,7 @@
 //
 
 using System;
-using Mono.Addins;
+// using Mono.Addins;
 
 using Hyena;
 using Banshee.Base;
@@ -45,25 +45,7 @@ namespace Banshee.Configuration
                     return;
                 }
 
-                if (AddinManager.IsInitialized) {
-                    foreach (TypeExtensionNode node in AddinManager.GetExtensionNodes (
-                        "/Banshee/Platform/ConfigurationClient")) {
-                        try {
-                            instance = (IConfigurationClient)node.CreateInstance (typeof (IConfigurationClient));
-                            if (instance != null) {
-                                break;
-                            }
-                        } catch (Exception e) {
-                            Log.Warning ("Configuration client extension failed to load", e.Message);
-                        }
-                    }
-
-                    if (instance == null) {
-                        instance = new XmlConfigurationClient ();
-                    }
-                } else {
-                    instance = new MemoryConfigurationClient ();
-                }
+                instance = new XmlConfigurationClient ();
 
                 Log.DebugFormat ("Configuration client extension loaded ({0})", instance.GetType ().FullName);
             }

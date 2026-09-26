@@ -26,11 +26,11 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using DBus;
+// using DBus;
 
 namespace Banshee.Collection
 {
-    [Interface("org.bansheeproject.Banshee.Tracks.Track")]
+    // [Interface("org.bansheeproject.Banshee.Tracks.Track")]
     public interface ITrackInfo : IBasicTrackInfo
     {
         string DisplayArtistName { get; }
