@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../../src/Hyena/Hyena/**/*.cs"
+             Exclude="
+               ../../src/Hyena/Hyena/**/Tests/**/*.cs;
+               ../../src/Hyena/Hyena/System.Web/**/*.cs
+             " />
+  </ItemGroup>
+
+</Project>
