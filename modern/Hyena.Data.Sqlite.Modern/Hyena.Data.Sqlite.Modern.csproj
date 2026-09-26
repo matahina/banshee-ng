@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Hyena.Modern/Hyena.Modern.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="../../src/Hyena/Hyena.Data.Sqlite/**/*.cs"
+             Exclude="../../src/Hyena/Hyena.Data.Sqlite/**/Tests/**/*.cs" />
+  </ItemGroup>
+
+</Project>
